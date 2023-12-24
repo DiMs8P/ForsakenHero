@@ -34,6 +34,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Health")
 	bool IsHealthFull() const;
 
+	UFUNCTION(BlueprintCallable, Category = "Health")
+	void AddHealth(float AdditionalHealth);
+
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;

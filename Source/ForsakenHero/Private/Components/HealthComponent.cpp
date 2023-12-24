@@ -15,6 +15,11 @@ bool UHealthComponent::IsHealthFull() const
 	return FMath::IsNearlyEqual(Health, MaxHealth);
 }
 
+void UHealthComponent::AddHealth(float AdditionalHealth)
+{
+	SetHealth(Health + AdditionalHealth);
+}
+
 // Called when the game starts
 void UHealthComponent::BeginPlay()
 {
