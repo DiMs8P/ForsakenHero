@@ -22,6 +22,10 @@ protected:
 	
 	virtual void OnDeath();
 
+public:
+	UPROPERTY(EditAnywhere)
+	TObjectPtr<class UNNEModelData> PreLoadedModelData;
+
 public:	
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;

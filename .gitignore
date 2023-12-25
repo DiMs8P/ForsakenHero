@@ -14,7 +14,7 @@ Saved
 *.xcodeproj
 *.xcworkspace
 
-.idea
+*.idea
 
 .plastic
 ignore.conf
@@ -22,3 +22,5 @@ ignore.conf
 Builds
 Build
 Tools
+
+1.exe

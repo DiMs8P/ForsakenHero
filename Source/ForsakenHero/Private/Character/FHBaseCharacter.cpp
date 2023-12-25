@@ -7,6 +7,9 @@
 #include "Components/CapsuleComponent.h"
 #include "Components/HealthComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "UObject/WeakInterfacePtr.h"
+#include "NNE.h"
+#include "NNEModelData.h"
 
 // Sets default values
 AFHBaseCharacter::AFHBaseCharacter() :
