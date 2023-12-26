@@ -299,17 +299,11 @@ void AFHBaseCharacter::OnJoinSessionComplete(FName SessionName, EOnJoinSessionCo
     }
 }
 PRAGMA_DISABLE_OPTIMIZATION
-void AFHBaseCharacter::UpdateInputData(float Distance, float PlayerHp, float EnemyHp, FVector PlayerLocation, FVector EnemyLocation)
+void AFHBaseCharacter::UpdateInputData(float Distance, float PlayerHp, float EnemyHp)
 {
 	ModelHelper->InputData[0] = Distance;
 	ModelHelper->InputData[1] = PlayerHp;
 	ModelHelper->InputData[2] = EnemyHp;
-	ModelHelper->InputData[3] = EnemyLocation[0];
-	ModelHelper->InputData[4] = EnemyLocation[1];
-	ModelHelper->InputData[5] = EnemyLocation[2];
-	ModelHelper->InputData[6] = PlayerLocation[0];
-	ModelHelper->InputData[7] = PlayerLocation[1];
-	ModelHelper->InputData[8] = PlayerLocation[2];
 }
 
 int AFHBaseCharacter::GetAction() const

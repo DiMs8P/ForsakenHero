@@ -80,7 +80,7 @@ private:
 #pragma region MachineLearning
 public:
 	UFUNCTION(BlueprintCallable)
-	void UpdateInputData(float Distance, float PlayerHp, float EnemyHp, FVector PlayerLocation, FVector EnemyLocation);
+	void UpdateInputData(float Distance, float PlayerHp, float EnemyHp);
 	
 	UFUNCTION(BlueprintCallable)
 	int GetAction() const;
