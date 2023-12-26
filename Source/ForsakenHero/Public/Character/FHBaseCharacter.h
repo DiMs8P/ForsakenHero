@@ -3,9 +3,22 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "NNERuntimeCPU.h"
 #include "GameFramework/Character.h"
 #include "Interfaces/OnlineSessionInterface.h"
 #include "FHBaseCharacter.generated.h"
+
+class FMyModelHelper
+{
+public:
+	TUniquePtr<UE::NNE::IModelInstanceCPU> ModelInstance;
+	TArray<float> InputData = {10, 100, 100};
+	TArray<float> OutputData = {0};
+	TArray<UE::NNE::FTensorBindingCPU> InputBindings;
+	TArray<UE::NNE::FTensorBindingCPU> OutputBindings;
+	bool bIsRunning = false;
+	bool bIsActualData = false;
+};
 
 UCLASS()
 class FORSAKENHERO_API AFHBaseCharacter : public ACharacter
@@ -22,9 +35,8 @@ protected:
 	
 	virtual void OnDeath();
 
-public:
-	UPROPERTY(EditAnywhere)
-	TObjectPtr<class UNNEModelData> PreLoadedModelData;
+	UFUNCTION(BlueprintCallable)
+	virtual void RunModel();
 
 public:	
 	// Called to bind functionality to input
@@ -41,6 +53,7 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category = Damage)
 	float LifeSpanOnDeath = 5.0f;
 
+	
 #pragma region Multiplayer
 public:
 	IOnlineSessionPtr OnlineSessionInterface;
@@ -62,5 +75,29 @@ private:
 	FOnJoinSessionCompleteDelegate JoinSessionCompleteDelegate;
 
 	TSharedPtr<FOnlineSessionSearch> SessionSearch;
+#pragma endregion
+
+#pragma region MachineLearning
+public:
+	UFUNCTION(BlueprintCallable)
+	void UpdateInputData(float Distance, float PlayerHp, float EnemyHp);
+	
+	UFUNCTION(BlueprintCallable)
+	int GetAction() const;
+
+	UFUNCTION(BlueprintCallable)
+	bool GetIsModelRunning() const;
+
+	UFUNCTION(BlueprintCallable)
+	bool GetIsModelActualData() const;
+
+	UFUNCTION(BlueprintCallable)
+	void SetIsModelActualData(bool bActualData);
+protected:
+	UPROPERTY(EditAnywhere)
+	TObjectPtr<class UNNEModelData> PreLoadedModelData;
+
+private:
+	TSharedPtr<FMyModelHelper> ModelHelper;
 #pragma endregion
 };

@@ -63,8 +63,9 @@ for epoch in range(num_epochs):
     print(f'Epoch {epoch + 1}, Loss: {loss.item()}')
 
 # Экспорт обученной модели в формат ONNX
-dummy_input = torch.randn(1, input_size)  # Пример входа для тестирования экспорта
+dummy_input = torch.randn(1, input_size)
+dummy_output = model(dummy_input)
+input_names = [ "combined_input"]
+output_names = [ "actor_action" ]
 model_path = 'model.onnx'  # Путь для сохранения модели
-torch.onnx.export(model, dummy_input, model_path)
-
-print(f'Model has been exported to {model_path}') 
+torch.onnx.export(model, dummy_input, model_path, verbose=False, input_names=input_names, output_names=output_names, export_params=True)
