@@ -12,8 +12,8 @@ class FMyModelHelper
 {
 public:
 	TUniquePtr<UE::NNE::IModelInstanceCPU> ModelInstance;
-	TArray<float> InputData = {10, 100, 100};
-	TArray<float> OutputData = {0};
+	TArray<float> InputData = {10, 100, 100, 100, 100, 100};
+	TArray<float> OutputData = {0, 0, 0};
 	TArray<UE::NNE::FTensorBindingCPU> InputBindings;
 	TArray<UE::NNE::FTensorBindingCPU> OutputBindings;
 	bool bIsRunning = false;
@@ -80,7 +80,7 @@ private:
 #pragma region MachineLearning
 public:
 	UFUNCTION(BlueprintCallable)
-	void UpdateInputData(float Distance, float PlayerHp, float EnemyHp);
+	void UpdateInputData(float Distance, float PlayerHp, float EnemyHp, FVector PlayerLocation, FVector EnemyLocation);
 	
 	UFUNCTION(BlueprintCallable)
 	int GetAction() const;
