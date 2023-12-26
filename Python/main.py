@@ -11,13 +11,13 @@ data_path = 'data.txt'
 data = []
 with open(data_path, 'r') as file:
     for line in file:
-        values = [float(x) if i != 9 else int(x) for i, x in enumerate(line.split())]
+        values = [float(x) if i != 3 else int(x) for i, x in enumerate(line.split())]
         data.append(values)
 data = torch.tensor(data)
 
 # Разделение данных на входы и метки
-X = data[:, :9]  # Первые три числа в каждой строке - входы
-y = data[:, 9].long()  # Четвертое число - метка (используем .long() для конвертации в тензор типа long)
+X = data[:, :3]  # Первые три числа в каждой строке - входы
+y = data[:, 3].long()  # Четвертое число - метка (используем .long() для конвертации в тензор типа long)
 
 # Создание набора данных
 dataset = TensorDataset(X, y)
@@ -42,7 +42,7 @@ class SimpleNN(nn.Module):
 
 
 # Инициализация нейросети
-input_size = 9
+input_size = 3
 hidden_size = 128
 output_size = len(torch.unique(y))  # Количество уникальных действий
 model = SimpleNN(input_size, hidden_size, output_size)

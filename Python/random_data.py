@@ -9,16 +9,10 @@ def generate_random_data(n, filename='data.txt'):
             float1 = random.uniform(0, 100)
             float2 = random.uniform(0, 100)
             float3 = random.uniform(0, 100)
-            float4 = random.uniform(0, 100)
-            float5 = random.uniform(0, 100)
-            float6 = random.uniform(0, 100)
-            float7 = random.uniform(0, 100)
-            float8 = random.uniform(0, 100)
-            float9 = random.uniform(0, 100)
             int_num = random.randint(0, 2)
 
             # Запись чисел в файл, форматирование их в строки
-            file.write(f'{float1:.2f} {float2:.2f} {float3:.2f} {float4:.2f} {float5:.2f} {float6:.2f} {float7:.2f} {float8:.2f} {float9:.2f} {int_num}\n')
+            file.write(f'{float1:.2f} {float2:.2f} {float3:.2f} {int_num}\n')
 
 
 # Вызов функции для создания файла с n случайными строками
